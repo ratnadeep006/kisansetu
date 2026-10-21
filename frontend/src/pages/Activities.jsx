@@ -13,9 +13,10 @@ const ACTIVITY_TYPES = [
   "Other",
 ];
 
-// Today's date as "YYYY-MM-DD" (the format a date input needs)
+// Today's date as "YYYY-MM-DD" in the user's local time
+// ("en-CA" is the locale that formats dates this way)
 function getToday() {
-  return new Date().toISOString().slice(0, 10);
+  return new Date().toLocaleDateString("en-CA");
 }
 
 // Turns "2026-10-20" into "20 Oct 2026"
@@ -37,6 +38,20 @@ function Activities() {
   const [notes, setNotes] = useState("");
   const [error, setError] = useState("");
 
+  // NEW: null = adding, an id = editing that activity
+  const [editingId, setEditingId] = useState(null);
+
+  // NEW: clears the form and returns to "add" mode
+  function resetForm() {
+    setEditingId(null);
+    setSelectedCropId("");
+    setType("Sowing");
+    setDate(getToday());
+    setNotes("");
+    setError("");
+  }
+
+  // Add a new activity OR update an existing one
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -52,22 +67,54 @@ function Activities() {
 
     const selectedCrop = crops.find((crop) => crop.id === selectedCropId);
 
-    const newActivity = {
-      id: crypto.randomUUID(),
-      cropId: selectedCrop.id,
-      cropName: selectedCrop.name,
-      type,
-      date,
-      notes: notes.trim(),
-    };
+    // Happens if the crop was deleted after this activity was saved
+    if (!selectedCrop) {
+      setError("That crop no longer exists. Please select another crop.");
+      return;
+    }
 
-    setActivities((previous) => [newActivity, ...previous]);
+    if (editingId) {
+      // EDIT MODE: replace only the activity with this id
+      setActivities((previous) =>
+        previous.map((item) =>
+          item.id === editingId
+            ? {
+                ...item,
+                cropId: selectedCrop.id,
+                cropName: selectedCrop.name,
+                type,
+                date,
+                notes: notes.trim(),
+              }
+            : item
+        )
+      );
+    } else {
+      // ADD MODE: same as before
+      const newActivity = {
+        id: crypto.randomUUID(),
+        cropId: selectedCrop.id,
+        cropName: selectedCrop.name,
+        type,
+        date,
+        notes: notes.trim(),
+      };
 
-    setSelectedCropId("");
-    setType("Sowing");
-    setDate(getToday());
-    setNotes("");
+      setActivities((previous) => [newActivity, ...previous]);
+    }
+
+    resetForm();
+  }
+
+  // NEW: fill the form with the activity's current values
+  function handleEditClick(item) {
+    setEditingId(item.id);
+    setSelectedCropId(item.cropId);
+    setType(item.type);
+    setDate(item.date);
+    setNotes(item.notes || "");
     setError("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function handleDeleteActivity(activityId) {
@@ -79,6 +126,11 @@ function Activities() {
     setActivities((previous) =>
       previous.filter((item) => item.id !== activityId)
     );
+
+    // If the activity being edited was deleted, reset the form
+    if (editingId === activityId) {
+      resetForm();
+    }
   }
 
   // Newest date first. "YYYY-MM-DD" text sorts correctly as plain text.
@@ -98,6 +150,8 @@ function Activities() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="crop-form profile-form">
+          <h2>{editingId ? "Edit Activity" : "Add Activity"}</h2>
+
           <div>
             <label htmlFor="activityCrop">Crop</label>
             <select
@@ -162,7 +216,16 @@ function Activities() {
             </p>
           )}
 
-          <button type="submit">Add Activity</button>
+          <div className="form-actions">
+            <button type="submit">
+              {editingId ? "Update Activity" : "Add Activity"}
+            </button>
+            {editingId && (
+              <button type="button" onClick={resetForm}>
+                Cancel
+              </button>
+            )}
+          </div>
         </form>
       )}
 
@@ -182,6 +245,9 @@ function Activities() {
               {item.notes && <p>{item.notes}</p>}
 
               <div className="crop-actions">
+                <button type="button" onClick={() => handleEditClick(item)}>
+                  Edit
+                </button>
                 <button
                   type="button"
                   className="delete-btn"

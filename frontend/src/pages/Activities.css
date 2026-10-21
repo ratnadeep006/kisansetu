@@ -176,6 +176,17 @@
   line-height: 1.6;
 }
 
+.profile-form h2 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.profile-form .form-actions {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  gap: 12px;
+}
+
 /* Mobile Responsive */
 @media (max-width: 600px) {
   .crops-page h1 {

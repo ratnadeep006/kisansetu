@@ -139,6 +139,7 @@ function Activities() {
   );
 
   return (
+    <div className="crops-page activities-page">
     <div className="crops-page">
       <h1>Activities</h1>
       <p>Keep a record of the work you do on your crops.</p>
@@ -262,6 +263,7 @@ function Activities() {
           <div className="empty-crops">No activities recorded yet.</div>
         )}
       </div>
+    </div>
     </div>
   );
 }

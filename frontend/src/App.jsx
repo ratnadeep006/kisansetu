@@ -11,11 +11,15 @@ import Consultations from "./pages/Consultations";
 import FarmerLayout from "./layouts/FarmerLayout";
 import FarmerDashboard from "./pages/FarmerDashboard";
 import FarmerProfile from "./pages/FarmerProfile";
+import CropDetail from "./pages/CropDetail";
+
 
 import ExpertConsultations from "./pages/ExpertConsultations";
 import ExpertLayout from "./layouts/ExpertLayout";
 import ExpertDashboard from "./pages/ExpertDashboard";
 import ExpertProfile from "./pages/ExpertProfile";
+
+
 
 function App() {
   return (
@@ -33,6 +37,8 @@ function App() {
                   <Route path="activities" element={<Activities />} />
                   <Route path="consultations" element={<Consultations />} />
                   <Route path="profile" element={<FarmerProfile />} />
+                  <Route path="crops/:cropId" element={<CropDetail />} />
+                  
                 </Route>
 
                 <Route path="/expert" element={<ExpertLayout />}>

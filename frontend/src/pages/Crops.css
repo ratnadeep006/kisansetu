@@ -1,310 +1,451 @@
+/* =========================================================
+   My Crops page
+   Everything is scoped to .my-crops-page
+   ========================================================= */
 
-/* =========================
-   CROPS PAGE
-========================= */
+.my-crops-page {
+  --cp-primary: #166534;
+  --cp-border: #e5e7eb;
+  --cp-text: #1f2937;
+  --cp-muted: #6b7280;
 
-.crops-page {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 0;
-}
-
-.crops-page h1 {
-  margin: 0 0 8px;
-  color: #243326;
-  font-size: 28px;
-}
-
-.crops-page h2 {
-  margin: 0;
-  color: #243326;
-  font-size: 20px;
-}
-
-.crops-page p {
-  color: #647064;
-  line-height: 1.6;
-}
-
-/* =========================
-   PAGE HEADER
-========================= */
-
-.crops-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  max-width: 1150px;
   gap: 16px;
 }
 
-.crops-header p {
-  margin: 6px 0;
-  font-size: 14px;
+/* ---------- Heading ---------- */
+.my-crops-page .crops-header h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  color: var(--cp-text);
 }
 
-.crops-header button,
-.crop-form button {
-  padding: 11px 18px;
-  border: none;
-  border-radius: 8px;
-  background: #237a3b;
-  color: #ffffff;
+.my-crops-page .crops-header p {
+  margin: 4px 0 0;
+  font-size: 15px;
+  color: var(--cp-muted);
+}
+
+.my-crops-page .crops-header > button {
+  padding: 11px 22px;
   font-size: 14px;
   font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #16a34a, var(--cp-primary));
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 16px rgba(22, 101, 52, 0.25);
+  transition: transform 0.15s, filter 0.15s;
 }
 
-.crops-header button:hover,
-.crop-form button:hover {
-  background: #185c2b;
+.my-crops-page .crops-header > button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
 }
 
-.crops-header button:active,
-.crop-form button:active {
-  transform: scale(0.98);
+/* ---------- Summary chips ---------- */
+.my-crops-page .crop-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
 }
 
-/* =========================
-   SEARCH AND FILTER
-========================= */
-
-.crops-toolbar {
+.my-crops-page .crop-stat {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--cp-border);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.crops-toolbar input,
-.crops-toolbar select {
-  min-width: 0;
-  padding: 11px 14px;
-  border: 1px solid #dce3d9;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #243326;
-  font: inherit;
-  font-size: 14px;
+.my-crops-page .crop-stat strong {
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--cp-primary);
 }
 
-.crops-toolbar input {
-  flex: 1;
-  min-width: 220px;
+.my-crops-page .crop-stat span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cp-muted);
 }
 
-.crops-toolbar select {
-  min-width: 150px;
+/* ---------- Form card ---------- */
+.my-crops-page .crop-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: start;
+  gap: 18px 20px;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid var(--cp-border);
+  border-top: 4px solid var(--cp-primary);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(22, 101, 52, 0.07);
 }
 
-.crops-toolbar input:focus,
-.crops-toolbar select:focus {
-  outline: none;
-  border-color: #237a3b;
-  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
-}
-
-/* Results count */
-.crops-page > p {
+.my-crops-page .crop-form h2 {
+  grid-column: 1 / -1;
   margin: 0;
-  font-size: 14px;
+  font-size: 20px;
+  color: var(--cp-text);
 }
 
-/* =========================
-   ADD / EDIT FORM
-========================= */
-
-.crop-form {
+.my-crops-page .crop-form > div {
   display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 24px;
-  background: #ffffff;
-  border: 1px solid #e5e9e2;
-  border-radius: 12px;
-}
-
-.crop-form h2 {
-  flex: 1 1 100%;
-}
-
-.crop-form > div {
-  display: flex;
-  flex: 1 1 200px;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
-.crop-form label {
-  color: #374151;
+.my-crops-page .crop-form label {
   font-size: 13px;
   font-weight: 600;
-}
-
-.crop-form input,
-.crop-form select {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #fafcf9;
-  color: #243326;
-  font: inherit;
-  font-size: 14px;
-}
-
-.crop-form input:focus,
-.crop-form select:focus {
-  outline: none;
-  border-color: #237a3b;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
-}
-
-.crop-form .crop-error {
-  flex: 1 1 100%;
-  margin: 0;
-  color: #dc2626;
-  font-size: 14px;
-}
-
-.crop-form button[type="button"] {
-  background: #eef2ed;
   color: #374151;
 }
 
-.crop-form button[type="button"]:hover {
-  background: #dfe6dc;
+.my-crops-page .crop-form input,
+.my-crops-page .crop-form select {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--cp-text);
+  background-color: #fafafa;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
-/* =========================
-   CROP CARDS
-========================= */
-
-.crop-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 18px;
+.my-crops-page .crop-form input:focus,
+.my-crops-page .crop-form select:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--cp-primary);
+  box-shadow: 0 0 0 4px rgba(22, 101, 52, 0.14);
 }
 
-.crop-card {
-  min-width: 0;
-  padding: 22px;
-  border: 1px solid #e5e9e2;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+.my-crops-page .crop-form .crop-error {
+  grid-column: 1 / -1;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
 }
 
-.crop-card:hover {
-  box-shadow: 0 5px 14px rgba(36, 51, 38, 0.08);
-  transform: translateY(-2px);
+.my-crops-page .crop-form .form-actions {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.crop-card h3 {
-  margin: 0 0 14px;
-  color: #243326;
-  font-size: 18px;
-  overflow-wrap: anywhere;
-}
-
-/* Season Badge */
-.season-badge {
-  display: inline-block;
-  padding: 6px 11px;
-  border-radius: 20px;
-  background: #e5f4e6;
-  color: #237a3b;
-  font-size: 12px;
+.my-crops-page .crop-form .form-actions button {
+  padding: 12px 28px;
+  font-size: 15px;
   font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.15s, background 0.15s;
 }
 
-/* =========================
-   EDIT / DELETE BUTTONS
-========================= */
+.my-crops-page .crop-form .form-actions button[type="submit"] {
+  color: #fff;
+  background: linear-gradient(135deg, #16a34a, var(--cp-primary));
+  border: none;
+  box-shadow: 0 6px 16px rgba(22, 101, 52, 0.28);
+}
 
-.crop-actions {
+.my-crops-page .crop-form .form-actions button[type="submit"]:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+.my-crops-page .crop-form .form-actions button[type="button"] {
+  color: #374151;
+  background: #fff;
+  border: 1px solid #d1d5db;
+}
+
+.my-crops-page .crop-form .form-actions button[type="button"]:hover {
+  background: #f3f4f6;
+}
+
+/* ---------- Toolbar ---------- */
+.my-crops-page .crops-toolbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
+  gap: 12px;
 }
 
-.crop-actions button {
-  padding: 8px 13px;
-  border: 1px solid #dce3d9;
-  border-radius: 6px;
-  background: #f7faf6;
-  color: #374151;
-  font-size: 13px;
+.my-crops-page .crops-toolbar input,
+.my-crops-page .crops-toolbar select {
+  padding: 11px 14px;
+  font-size: 14px;
+  color: var(--cp-text);
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.my-crops-page .crops-toolbar input {
+  flex: 1 1 220px;
+}
+
+.my-crops-page .crops-toolbar input:focus,
+.my-crops-page .crops-toolbar select:focus {
+  outline: none;
+  border-color: var(--cp-primary);
+  box-shadow: 0 0 0 4px rgba(22, 101, 52, 0.14);
+}
+
+.my-crops-page .clear-btn {
+  padding: 10px 16px;
+  font-size: 14px;
   font-weight: 600;
+  color: var(--cp-primary);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
   cursor: pointer;
 }
 
-.crop-actions button:hover {
-  background: #e8efe6;
+.my-crops-page .clear-btn:hover {
+  background: #dcfce7;
 }
 
-.crop-actions .delete-btn {
-  border-color: #fecaca;
-  background: #fee2e2;
-  color: #b91c1c;
+.my-crops-page .crops-count {
+  margin: 0;
+  font-size: 14px;
+  color: var(--cp-muted);
 }
 
-.crop-actions .delete-btn:hover {
-  background: #fecaca;
+/* ---------- Crop cards ---------- */
+.my-crops-page .crop-list {
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 20px;
 }
 
-/* =========================
-   EMPTY STATE
-========================= */
+.my-crops-page .crop-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--cp-border);
+  border-left: 4px solid var(--cp-primary);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
 
-.empty-crops {
+.my-crops-page .crop-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+}
+
+.my-crops-page .crop-card.is-harvested {
+  background: #fafafa;
+  border-left-color: #d97706;
+}
+
+.my-crops-page .crop-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.my-crops-page .crop-card h3 {
+  margin: 0;
+  font-size: 21px;
+  color: var(--cp-text);
+}
+
+.my-crops-page .status-pill {
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+}
+
+.my-crops-page .status-growing {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.my-crops-page .status-harvested {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+/* ---------- Details list ---------- */
+.my-crops-page .crop-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 12px 14px;
+  list-style: none;
+  font-size: 14px;
+  color: #374151;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.my-crops-page .crop-meta small {
+  font-size: 12.5px;
+  color: var(--cp-muted);
+}
+
+.my-crops-page .crop-meta a {
+  font-weight: 600;
+  color: var(--cp-primary);
+  text-decoration: none;
+}
+
+.my-crops-page .crop-meta a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Card buttons ---------- */
+.my-crops-page .crop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--cp-border);
+}
+
+.my-crops-page .crop-actions button {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+/* Edit */
+.my-crops-page .crop-actions button:not(.delete-btn):not(.harvest-btn) {
+  color: var(--cp-primary);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.my-crops-page .crop-actions button:not(.delete-btn):not(.harvest-btn):hover {
+  color: #fff;
+  background: var(--cp-primary);
+  border-color: var(--cp-primary);
+}
+
+/* Harvest toggle */
+.my-crops-page .crop-actions .harvest-btn {
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+.my-crops-page .crop-actions .harvest-btn:hover {
+  background: #fef3c7;
+}
+
+/* Delete */
+.my-crops-page .crop-actions .delete-btn {
+  margin-left: auto;
+  color: #b42318;
+  background: #fff1f0;
+  border: 1px solid #fecaca;
+}
+.my-crops-page .crop-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.my-crops-page .crop-card h3 a:hover {
+  color: var(--cp-primary);
+  text-decoration: underline;
+}
+
+.my-crops-page .crop-actions .delete-btn:hover {
+  color: #fff;
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+/* ---------- Empty state ---------- */
+.my-crops-page .empty-crops {
+  padding: 40px 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--cp-muted);
+  background: #fff;
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+}
+
+.my-crops-page .crop-list .empty-crops {
   grid-column: 1 / -1;
-  padding: 32px 20px;
-  border: 1px dashed #cbd5c8;
-  border-radius: 12px;
-  background: #ffffff;
-  color: #647064;
-  text-align: center;
-  line-height: 1.7;
 }
 
-/* =========================
-   RESPONSIVE DESIGN
-========================= */
+/* ---------- Keyboard focus ---------- */
+.my-crops-page button:focus-visible,
+.my-crops-page a:focus-visible {
+  outline: 3px solid rgba(22, 101, 52, 0.45);
+  outline-offset: 2px;
+}
 
+/* ---------- Mobile ---------- */
 @media (max-width: 600px) {
-  .crops-page h1 {
+  .my-crops-page .crops-header h1 {
     font-size: 24px;
   }
 
-  .crops-header {
-    align-items: flex-start;
-  }
-
-  .crops-toolbar {
-    flex-direction: column;
-  }
-
-  .crops-toolbar input,
-  .crops-toolbar select {
+  .my-crops-page .crops-header > button {
     width: 100%;
-    min-width: 0;
   }
 
-  .crop-form {
-    padding: 18px;
+  .my-crops-page .crop-form {
+    padding: 20px;
   }
 
-  .crop-form > div {
-    flex-basis: 100%;
+  .my-crops-page .crop-form .form-actions button {
+    flex: 1 1 100%;
   }
 
-  .crop-list {
+  .my-crops-page .crops-toolbar select,
+  .my-crops-page .clear-btn {
+    flex: 1 1 100%;
+  }
+
+  .my-crops-page .crop-list {
     grid-template-columns: 1fr;
+  }
+
+  .my-crops-page .crop-actions .delete-btn {
+    margin-left: 0;
+  }
+}
+
+/* ---------- Respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .my-crops-page * {
+    transition: none !important;
+  }
+
+  .my-crops-page .crop-card:hover,
+  .my-crops-page .crops-header > button:hover {
+    transform: none;
   }
 }

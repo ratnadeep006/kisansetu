@@ -1,115 +1,303 @@
+/* =========================================================
+   Farmer Dashboard
+   Everything is scoped to .farmer-dashboard
+   ========================================================= */
 
-/* Farmer Profile Page */
-.farmer-profile-page {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-}
+.farmer-dashboard {
+  --fd-primary: #166534;
+  --fd-primary-dark: #14532d;
+  --fd-border: #e5e9e2;
+  --fd-text: #1f2937;
+  --fd-muted: #6b7280;
 
-.farmer-profile-page h1 {
-  margin: 0;
-  color: #243326;
-  font-size: 28px;
-}
-
-.farmer-profile-page > p {
-  margin: 0;
-  color: #647064;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* Profile Form */
-.farmer-profile-page .profile-form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: 20px;
-  width: 100%;
-  max-width: 720px;
-  margin-top: 12px;
-  padding: 28px;
-  background: #ffffff;
-  border: 1px solid #e5e9e2;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-}
-
-.farmer-profile-page .profile-form div {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-width: 1150px;
+}
+
+/* ---------- Heading ---------- */
+.farmer-dashboard > h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+  color: var(--fd-text);
+}
+
+.farmer-dashboard > h1 + p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--fd-muted);
+}
+
+/* ---------- Summary cards ---------- */
+.farmer-dashboard .dashboard-cards {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 22px;
+}
+
+.farmer-dashboard .dashboard-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--fd-border);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* coloured strip on top of each card */
+.farmer-dashboard .dashboard-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: #22c55e;
+}
+
+.farmer-dashboard .dashboard-card:nth-child(2)::before {
+  background: #f59e0b;
+}
+
+.farmer-dashboard .dashboard-card:nth-child(3)::before {
+  background: #3b82f6;
+}
+
+.farmer-dashboard .dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+}
+
+.farmer-dashboard .dashboard-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fd-muted);
+}
+
+/* emoji icon in a soft circle */
+.farmer-dashboard .dashboard-card h3::before {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 17px;
+  letter-spacing: 0;
+  border-radius: 50%;
+  background: #dcfce7;
+  content: "🌱";
+}
+
+.farmer-dashboard .dashboard-card:nth-child(2) h3::before {
+  content: "📋";
+  background: #fef3c7;
+}
+
+.farmer-dashboard .dashboard-card:nth-child(3) h3::before {
+  content: "💬";
+  background: #dbeafe;
+}
+
+/* the main number line */
+.farmer-dashboard .dashboard-card > p {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--fd-text);
+}
+
+/* ---------- Small chips (season / status counts) ---------- */
+.farmer-dashboard .season-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.farmer-dashboard .season-summary li {
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+  background: #f3f4f6;
+  border-radius: 999px;
+}
+
+/* ---------- Quick actions ---------- */
+.farmer-dashboard .quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.farmer-dashboard .quick-actions a {
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #16a34a, var(--fd-primary));
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(22, 101, 52, 0.25);
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+.farmer-dashboard .quick-actions a:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 10px 22px rgba(22, 101, 52, 0.32);
+}
+
+/* ---------- Recent panels ---------- */
+.farmer-dashboard .recent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 26px;
+}
+
+.farmer-dashboard .recent-panel {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--fd-border);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.farmer-dashboard .recent-panel h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: var(--fd-text);
+}
+
+.farmer-dashboard .recent-panel h2::before {
+  content: "";
+  width: 5px;
+  height: 20px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #22c55e, var(--fd-primary));
+}
+
+.farmer-dashboard .recent-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.farmer-dashboard .recent-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 10px;
+  margin: 0 -10px;
+  border-bottom: 1px solid #f0f2ee;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.farmer-dashboard .recent-list li:hover {
+  background: #f8faf7;
+}
+
+.farmer-dashboard .recent-list li:last-child {
+  border-bottom: none;
+}
+
+.farmer-dashboard .recent-list li div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
   min-width: 0;
 }
 
-.farmer-profile-page .profile-form label {
-  color: #374151;
-  font-size: 14px;
-  font-weight: 600;
+.farmer-dashboard .recent-list strong {
+  font-size: 15px;
+  color: var(--fd-text);
 }
 
-.farmer-profile-page .profile-form input {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  background: #fafafa;
-  color: #243326;
-  font: inherit;
+.farmer-dashboard .recent-list span {
+  font-size: 13px;
+  color: var(--fd-muted);
 }
 
-.farmer-profile-page .profile-form input:focus {
-  outline: none;
-  border-color: #237a3b;
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
+.farmer-dashboard .recent-list small {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--fd-muted);
+  background: #f3f4f6;
+  border-radius: 999px;
 }
 
-/* Error and success messages */
-.farmer-profile-page .profile-form .crop-error,
-.farmer-profile-page .profile-form .profile-success {
-  grid-column: 1 / -1;
+.farmer-dashboard .recent-empty {
   margin: 0;
+  padding: 22px;
   font-size: 14px;
+  text-align: center;
+  color: var(--fd-muted);
+  background: #fafafa;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
 }
 
-.farmer-profile-page .profile-form .crop-error {
-  color: #dc2626;
-}
-
-.farmer-profile-page .profile-form .profile-success {
-  color: #166534;
-}
-
-/* Save Button */
-.farmer-profile-page .profile-form button {
-  grid-column: 1 / -1;
-  justify-self: start;
-  padding: 11px 24px;
-  border: none;
-  border-radius: 8px;
-  background: #166534;
-  color: #ffffff;
+.farmer-dashboard .recent-link {
+  display: inline-block;
+  margin-top: 14px;
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease;
+  text-decoration: none;
+  color: var(--fd-primary);
 }
 
-.farmer-profile-page .profile-form button:hover {
-  background: #14532d;
+.farmer-dashboard .recent-link:hover {
+  text-decoration: underline;
 }
 
-/* Mobile Responsive */
-@media (max-width: 600px) {
-  .farmer-profile-page h1 {
-    font-size: 24px;
+/* ---------- Keyboard focus ---------- */
+.farmer-dashboard a:focus-visible {
+  outline: 3px solid rgba(22, 101, 52, 0.45);
+  outline-offset: 2px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  .farmer-dashboard > h1 {
+    font-size: 25px;
   }
 
-  .farmer-profile-page .profile-form {
+  .farmer-dashboard .recent-grid {
     grid-template-columns: 1fr;
-    padding: 20px;
-    gap: 16px;
+  }
+
+  .farmer-dashboard .quick-actions a {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+
+/* ---------- Respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .farmer-dashboard * {
+    transition: none !important;
+  }
+
+  .farmer-dashboard .dashboard-card:hover,
+  .farmer-dashboard .quick-actions a:hover {
+    transform: none;
   }
 }

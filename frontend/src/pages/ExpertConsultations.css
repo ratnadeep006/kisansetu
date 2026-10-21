@@ -1,0 +1,164 @@
+
+/* EXPERT CONSULTATIONS PAGE */
+
+.consultations-page {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.consultations-page h1 {
+  margin: 0;
+  color: #243326;
+  font-size: 28px;
+}
+
+.consultations-page > p {
+  margin: 0;
+  color: #647064;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Consultation Cards */
+.consultations-page .crop-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  align-items: start;
+  gap: 14px;
+}
+
+.consultations-page .crop-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #e5e9e2;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  overflow-wrap: anywhere;
+  transition: box-shadow 0.2s ease;
+}
+
+.consultations-page .crop-card:hover {
+  box-shadow: 0 5px 14px rgba(36, 51, 38, 0.08);
+}
+
+.consultations-page .crop-card h3 {
+  margin: 0 0 8px;
+  color: #243326;
+  font-size: 18px;
+}
+
+.consultations-page .crop-card p {
+  margin: 6px 0;
+  color: #526052;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.consultations-page .crop-card strong {
+  display: block;
+  margin: 10px 0 4px;
+  color: #243326;
+  font-size: 14px;
+}
+
+/* Request Status */
+.consultations-page .season-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: #fff3cd;
+  color: #856404;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Reply Form */
+.consultations-page .crop-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.consultations-page .crop-card form label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.consultations-page .crop-card form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fafcf9;
+  color: #243326;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.consultations-page .crop-card form textarea:focus {
+  outline: none;
+  border-color: #237a3b;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
+}
+
+/* Send Reply Button */
+.consultations-page .crop-card form button {
+  align-self: flex-start;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #237a3b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.consultations-page .crop-card form button:hover {
+  background: #185c2b;
+}
+
+/* Validation Message */
+.consultations-page .crop-error {
+  margin: 0;
+  color: #dc2626;
+  font-size: 13px;
+}
+
+/* Empty State */
+.consultations-page .empty-crops {
+  grid-column: 1 / -1;
+  padding: 22px 16px;
+  border: 1px dashed #cbd5c8;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #647064;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .consultations-page h1 {
+    font-size: 24px;
+  }
+
+  .consultations-page .crop-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .consultations-page .crop-card {
+    padding: 16px;
+  }
+}

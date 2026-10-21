@@ -1,0 +1,42 @@
+
+/* Main Application Container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f7f2;
+}
+
+/* Layout Below Navbar */
+.dashboard-layout {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 70px);
+}
+
+/* Expert Page Content */
+.dashboard-content {
+  flex: 1;
+  min-width: 0;
+  padding: 32px;
+  overflow-wrap: anywhere;
+}
+
+/* Tablet and Mobile Layout */
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .dashboard-content {
+    padding: 24px 16px;
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 18px 12px;
+  }
+}

@@ -1,0 +1,100 @@
+
+/* Farmer Dashboard */
+.farmer-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.farmer-dashboard h1 {
+  margin: 0;
+  color: #243326;
+  font-size: 28px;
+}
+
+.farmer-dashboard > p {
+  margin: 0;
+  color: #647064;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Dashboard Cards */
+.farmer-dashboard .dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.farmer-dashboard .dashboard-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #e5e9e2;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.farmer-dashboard .dashboard-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(36, 51, 38, 0.08);
+}
+
+.farmer-dashboard .dashboard-card h3 {
+  margin: 0 0 14px;
+  color: #526052;
+  font-size: 16px;
+}
+
+.farmer-dashboard .dashboard-card p {
+  margin: 0;
+  color: #237a3b;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Crop Season Summary */
+.farmer-dashboard .season-summary {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f5f7f2;
+}
+
+.farmer-dashboard .season-summary li {
+  padding: 6px 0;
+  color: #526052;
+  font-size: 14px;
+}
+
+.farmer-dashboard .season-summary li + li {
+  border-top: 1px solid #e5e9e2;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .farmer-dashboard .dashboard-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .farmer-dashboard h1 {
+    font-size: 24px;
+  }
+
+  .farmer-dashboard .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .farmer-dashboard .dashboard-card {
+    padding: 20px;
+  }
+}

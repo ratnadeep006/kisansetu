@@ -1,0 +1,115 @@
+
+/* Farmer Profile Page */
+.farmer-profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.farmer-profile-page h1 {
+  margin: 0;
+  color: #243326;
+  font-size: 28px;
+}
+
+.farmer-profile-page > p {
+  margin: 0;
+  color: #647064;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Profile Form */
+.farmer-profile-page .profile-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+  width: 100%;
+  max-width: 720px;
+  margin-top: 12px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e5e9e2;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.farmer-profile-page .profile-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.farmer-profile-page .profile-form label {
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.farmer-profile-page .profile-form input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fafafa;
+  color: #243326;
+  font: inherit;
+}
+
+.farmer-profile-page .profile-form input:focus {
+  outline: none;
+  border-color: #237a3b;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
+}
+
+/* Error and success messages */
+.farmer-profile-page .profile-form .crop-error,
+.farmer-profile-page .profile-form .profile-success {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 14px;
+}
+
+.farmer-profile-page .profile-form .crop-error {
+  color: #dc2626;
+}
+
+.farmer-profile-page .profile-form .profile-success {
+  color: #166534;
+}
+
+/* Save Button */
+.farmer-profile-page .profile-form button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 11px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #166534;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.farmer-profile-page .profile-form button:hover {
+  background: #14532d;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  .farmer-profile-page h1 {
+    font-size: 24px;
+  }
+
+  .farmer-profile-page .profile-form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 16px;
+  }
+}

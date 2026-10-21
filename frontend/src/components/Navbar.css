@@ -1,0 +1,130 @@
+
+/* Main Navbar */
+.navbar {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 28px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e9e2;
+}
+
+/* KisanSetu Logo */
+.navbar-brand {
+  flex-shrink: 0;
+  font-size: 23px;
+  font-weight: 700;
+  color: #237a3b;
+  white-space: nowrap;
+}
+
+/* Search Bar */
+.navbar-search {
+  flex: 1;
+  max-width: 360px;
+}
+
+.navbar-search input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #dce3d9;
+  border-radius: 8px;
+  background: #fafcf9;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-search input:focus {
+  border-color: #237a3b;
+  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
+  background: #ffffff;
+}
+
+/* User Information */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  color: #374151;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Switch Between Farmer and Expert */
+.switch-area-link {
+  padding: 9px 12px;
+  border: 1px solid #d7e8d7;
+  border-radius: 8px;
+  color: #237a3b;
+  background: #f4faf3;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.switch-area-link:hover {
+  background: #e5f4e6;
+}
+
+/* User Avatar */
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #dff2df;
+  color: #237a3b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Tablet and Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    gap: 14px;
+    padding: 14px 16px;
+    flex-wrap: wrap;
+  }
+
+  .navbar-brand {
+    font-size: 21px;
+  }
+
+  .navbar-search {
+    order: 3;
+    flex: 1 0 100%;
+    max-width: none;
+  }
+
+  .navbar-user {
+    margin-left: auto;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .switch-area-link {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar {
+    gap: 12px;
+  }
+
+  .navbar-user {
+    flex-wrap: wrap;
+  }
+
+  .navbar-user > span {
+    display: none;
+  }
+}

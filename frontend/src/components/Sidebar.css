@@ -1,0 +1,137 @@
+/* Custom Properties for easy theme management */
+:root {
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e5e9e2;
+  --sidebar-text-main: #243326;
+  --sidebar-text-muted: #526052;
+  --sidebar-primary: #237a3b;
+  --sidebar-hover-bg: #f0f7ef;
+  --sidebar-active-bg: #e5f4e6;
+  --sidebar-transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Farmer Sidebar Base */
+.sidebar {
+  box-sizing: border-box;
+  width: 240px;
+  height: 100vh; /* Full height */
+  position: sticky;
+  top: 0;
+  flex-shrink: 0;
+  padding: 24px 16px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  overflow-y: auto; /* Allow scrolling if menu gets long */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar Heading */
+.sidebar h3 {
+  margin: 0 0 24px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--sidebar-text-main);
+  padding-left: 12px; /* Aligns text with the links */
+  letter-spacing: -0.01em;
+}
+
+/* Navigation Layout */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Navigation Links */
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Space for potential SVG icons */
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--sidebar-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: all var(--sidebar-transition);
+}
+
+/* Hover Effect */
+.sidebar nav a:hover {
+  background: var(--sidebar-hover-bg);
+  color: var(--sidebar-primary);
+}
+
+/* Active Page */
+.sidebar nav a.active {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-primary);
+  font-weight: 600;
+}
+
+/* Active Page Visual Indicator */
+.sidebar nav a.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 4px;
+  background-color: var(--sidebar-primary);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Accessibility: Keyboard Navigation */
+.sidebar nav a:focus-visible {
+  outline: 2px solid var(--sidebar-primary);
+  outline-offset: -2px;
+  background: var(--sidebar-hover-bg);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 16px;
+    border-right: none;
+    border-bottom: 1px solid var(--sidebar-border);
+    
+    /* Horizontal scrolling for mobile app feel */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+  }
+
+  /* Hide scrollbar WebKit */
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sidebar h3 {
+    display: none; /* Hide heading on mobile to save space */
+  }
+
+  .sidebar nav {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .sidebar nav a {
+    white-space: nowrap;
+    padding: 10px 16px;
+  }
+
+  /* Shift active indicator to the bottom for horizontal layout */
+  .sidebar nav a.active::before {
+    left: 15%;
+    top: auto;
+    bottom: 0;
+    height: 3px;
+    width: 70%;
+    border-radius: 4px 4px 0 0;
+  }
+}

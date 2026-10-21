@@ -1,0 +1,310 @@
+
+/* =========================
+   CROPS PAGE
+========================= */
+
+.crops-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.crops-page h1 {
+  margin: 0 0 8px;
+  color: #243326;
+  font-size: 28px;
+}
+
+.crops-page h2 {
+  margin: 0;
+  color: #243326;
+  font-size: 20px;
+}
+
+.crops-page p {
+  color: #647064;
+  line-height: 1.6;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.crops-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.crops-header p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.crops-header button,
+.crop-form button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #237a3b;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.crops-header button:hover,
+.crop-form button:hover {
+  background: #185c2b;
+}
+
+.crops-header button:active,
+.crop-form button:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   SEARCH AND FILTER
+========================= */
+
+.crops-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.crops-toolbar input,
+.crops-toolbar select {
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid #dce3d9;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #243326;
+  font: inherit;
+  font-size: 14px;
+}
+
+.crops-toolbar input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.crops-toolbar select {
+  min-width: 150px;
+}
+
+.crops-toolbar input:focus,
+.crops-toolbar select:focus {
+  outline: none;
+  border-color: #237a3b;
+  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
+}
+
+/* Results count */
+.crops-page > p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* =========================
+   ADD / EDIT FORM
+========================= */
+
+.crop-form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e9e2;
+  border-radius: 12px;
+}
+
+.crop-form h2 {
+  flex: 1 1 100%;
+}
+
+.crop-form > div {
+  display: flex;
+  flex: 1 1 200px;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.crop-form label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.crop-form input,
+.crop-form select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fafcf9;
+  color: #243326;
+  font: inherit;
+  font-size: 14px;
+}
+
+.crop-form input:focus,
+.crop-form select:focus {
+  outline: none;
+  border-color: #237a3b;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(35, 122, 59, 0.12);
+}
+
+.crop-form .crop-error {
+  flex: 1 1 100%;
+  margin: 0;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.crop-form button[type="button"] {
+  background: #eef2ed;
+  color: #374151;
+}
+
+.crop-form button[type="button"]:hover {
+  background: #dfe6dc;
+}
+
+/* =========================
+   CROP CARDS
+========================= */
+
+.crop-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.crop-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e5e9e2;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.crop-card:hover {
+  box-shadow: 0 5px 14px rgba(36, 51, 38, 0.08);
+  transform: translateY(-2px);
+}
+
+.crop-card h3 {
+  margin: 0 0 14px;
+  color: #243326;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+/* Season Badge */
+.season-badge {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  background: #e5f4e6;
+  color: #237a3b;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================
+   EDIT / DELETE BUTTONS
+========================= */
+
+.crop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.crop-actions button {
+  padding: 8px 13px;
+  border: 1px solid #dce3d9;
+  border-radius: 6px;
+  background: #f7faf6;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.crop-actions button:hover {
+  background: #e8efe6;
+}
+
+.crop-actions .delete-btn {
+  border-color: #fecaca;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.crop-actions .delete-btn:hover {
+  background: #fecaca;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-crops {
+  grid-column: 1 / -1;
+  padding: 32px 20px;
+  border: 1px dashed #cbd5c8;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #647064;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 600px) {
+  .crops-page h1 {
+    font-size: 24px;
+  }
+
+  .crops-header {
+    align-items: flex-start;
+  }
+
+  .crops-toolbar {
+    flex-direction: column;
+  }
+
+  .crops-toolbar input,
+  .crops-toolbar select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .crop-form {
+    padding: 18px;
+  }
+
+  .crop-form > div {
+    flex-basis: 100%;
+  }
+
+  .crop-list {
+    grid-template-columns: 1fr;
+  }
+}
